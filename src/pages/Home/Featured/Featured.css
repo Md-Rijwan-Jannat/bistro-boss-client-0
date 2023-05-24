@@ -1,0 +1,6 @@
+.featured-item{
+    background-image: url('../../../assets/home//featured.jpg');
+    height: 100%;
+    color: white;
+    filter: brightness(50%)
+}
