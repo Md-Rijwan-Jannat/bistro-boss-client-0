@@ -5,7 +5,6 @@ import pizzaImg2 from "../../../assets/menu/pizza-bg.jpg";
 import soupImg2 from "../../../assets/menu/soup-bg.jpg";
 import useMenu from "../../../components/hooks/useMenu";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
-import MenuButton from "../../../components/MenuButton/MenuButton";
 import MenuCategory from "../MenuCategory/MenuCategory";
 import Cover from "../../shared/Cover/Cover";
 
@@ -30,27 +29,26 @@ const Menu = () => {
                     Heading={"TODAY'S OFFER"}
                 ></SectionTitle>
                 <MenuCategory items={offered}></MenuCategory>
-                <MenuButton btnMenu={"ORDER YOUR FAVOURITE FOOD"}></MenuButton>
             </section>
 
 
             {/* dessert section */}
 
             <section>
-                <MenuCategory items={dessert} img={dessertImg2} title="Dessert" details='Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'></MenuCategory>
-                <MenuButton btnMenu={"ORDER YOUR FAVOURITE FOOD"}></MenuButton>
+                <MenuCategory items={dessert} img={dessertImg2} title="dessert" details='Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'></MenuCategory>
+                
             </section>
             {/* pizza section */}
 
             <section>
                <MenuCategory items={pizza} img={pizzaImg2} title="pizza" details='Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'></MenuCategory>
-                <MenuButton btnMenu={"ORDER YOUR FAVOURITE FOOD"}></MenuButton>
+                
             </section>
             {/* soups section */}
 
             <section>
-               <MenuCategory items={soups} img={soupImg2} title="Soups" details='Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'></MenuCategory>
-                <MenuButton btnMenu={"ORDER YOUR FAVOURITE FOOD"}></MenuButton>
+               <MenuCategory items={soups} img={soupImg2} title="soups" details='Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'></MenuCategory>
+         
             </section>
         </div>
     );

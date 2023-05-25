@@ -3,7 +3,7 @@ import Recipe from "../../shared/Recipe/Recipe";
 
 const RecipeCategory = ({recipes}) => {
     return (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-center mt-10 mb-16">
             {
                 recipes.map(rec => <Recipe
                     key={rec._id}

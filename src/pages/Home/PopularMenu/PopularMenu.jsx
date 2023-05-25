@@ -1,6 +1,6 @@
+import { Link } from "react-router-dom";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import useMenu from "../../../components/hooks/useMenu";
-import MenuButton from "../../../components/MenuButton/MenuButton";
 import MenuItem from "../../shared/MenuItem/MenuItem";
 
 
@@ -23,7 +23,7 @@ const PopularMenu = () => {
                     ></MenuItem>)
                 }
             </div>
-            <MenuButton btnMenu={"View full Menu"}></MenuButton>
+            <Link to={`/order`} className="btn btn-outline border-0 border-b-4">Order Now</Link>
         </section>
     );
 };

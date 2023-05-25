@@ -5,7 +5,7 @@ const Navbar = () => {
     const link = <>
         <li><Link className="hover:text-yellow-500" to={'/'}>Home</Link></li>
         <li><Link className="hover:text-yellow-500" to={'/menu'}>Our Menu</Link></li>
-        <li><Link className="hover:text-yellow-500" to={'/order'}>Order</Link></li>
+        <li><Link className="hover:text-yellow-500" to={'/order/salad'}>Order</Link></li>
         <li><Link className="hover:text-yellow-500" to={'/'}>DASHBOARD</Link></li>
         <li><Link className="hover:text-yellow-500" to={'/contact'}>CONTACT us</Link></li>
         <div className="dropdown dropdown-end">
