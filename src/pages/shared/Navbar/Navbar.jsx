@@ -4,10 +4,10 @@ import { FaUser } from "react-icons/fa";
 const Navbar = () => {
     const link = <>
         <li><Link className="hover:text-yellow-500" to={'/'}>Home</Link></li>
-        <li><Link className="hover:text-yellow-500" to={'/contact'}>CONTACT us</Link></li>
-        <li><Link className="hover:text-yellow-500" to={'/'}>DASHBOARD</Link></li>
         <li><Link className="hover:text-yellow-500" to={'/menu'}>Our Menu</Link></li>
-        <li><Link className="hover:text-yellow-500" to={'/'}>Our Shop</Link></li>
+        <li><Link className="hover:text-yellow-500" to={'/order'}>Order</Link></li>
+        <li><Link className="hover:text-yellow-500" to={'/'}>DASHBOARD</Link></li>
+        <li><Link className="hover:text-yellow-500" to={'/contact'}>CONTACT us</Link></li>
         <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle">
                 <div className="indicator">
