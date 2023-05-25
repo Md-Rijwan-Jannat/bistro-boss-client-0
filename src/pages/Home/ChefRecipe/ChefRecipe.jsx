@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import Recipe from "../../../shared/Recipe/Recipe";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
+import Recipe from "../../shared/Recipe/Recipe";
 
 const ChefRecipe = () => {
     const [recipes, setRecipes] = useState([]);
