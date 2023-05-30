@@ -1,5 +1,5 @@
 
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import signUpImg from '../assets/others/authentication2.png'
 import { useForm } from "react-hook-form";
 import { useContext } from 'react';
@@ -10,23 +10,47 @@ import { toast } from 'react-hot-toast';
 import { Helmet } from 'react-helmet';
 
 const SignUp = () => {
-    const { signUp } = useContext(AuthContext);
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const { signUp, userProfile } = useContext(AuthContext);
+    const navigate = useNavigate();
+
     const onSubmit = data => {
         console.log(data)
         signUp(data.email, data.password)
             .then(result => {
                 const signedUser = result.user;
                 console.log(signedUser)
-              
-                    Swal.fire({
-                        position: 'top-end',
-                        icon: 'success',
-                        title: 'Register successfully',
-                        showConfirmButton: false,
-                        timer: 1500
+                userProfile(data.name, data.photo)
+                    .then(result => {
+                        const saveUser = { name: data.name, email: data.email };
+                        fetch(`http://localhost:5000/users`, {
+                            method: "POST",
+                            headers: {
+                                "content-type": "application/json"
+                            },
+                            body: JSON.stringify(saveUser)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                console.log(data);
+                                if (data.insertedId) {
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'success',
+                                        title: 'Register successfully',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    })
+                                    reset();
+                                    console.log('User profile updated', result);
+                                    navigate('/')
+                                }
+                            })
+
                     })
-              
+                    .catch(error => {
+                        console.log(error);
+                    })
             })
             .catch(error => {
                 console.log(error)

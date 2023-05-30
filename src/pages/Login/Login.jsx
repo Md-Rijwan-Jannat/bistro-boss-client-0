@@ -5,15 +5,16 @@ import { AuthContext } from '../../provider/AuthProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import { Helmet } from 'react-helmet';
+import SocialLogin from '../../components/SocialLogin/SocialLogin';
 
 
 const Login = () => {
-    const { loginUser, userProfile } = useContext(AuthContext);
+    const { loginUser } = useContext(AuthContext);
     const [disabled, setDisabled] = useState(true);
     const location = useLocation()
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || '/'
-    
+
     useEffect(() => {
         loadCaptchaEnginge(4);
     }, [])
@@ -29,12 +30,6 @@ const Login = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
                 navigate(from, { replace: true })
-                userProfile(loggedUser.name, loggedUser.photo)
-                    .then(result => {
-                        console.log(result);
-                        toast.success("Login successfully")
-                        form.reset('')
-                    })
                     .catch(error => {
                         console.log(error)
                         toast.error(error.message)
@@ -63,8 +58,8 @@ const Login = () => {
                 <div className="text-center w-1/2 lg:text-left">
                     <img className='md:w-[650px]' src={loginImg} alt="" />
                 </div>
-                <form onSubmit={loginHandle} className="w-1/2 shadow-2xl bg-base-100">
-                    <div className="card-body ">
+                <div className="w-1/2 shadow-2xl bg-base-100">
+                    <from onSubmit={loginHandle} className="card-body ">
                         <h2 className='text-3xl text-center mt-10 mb-5'>Login</h2>
                         <div className="form-control">
                             <label className="label">
@@ -88,8 +83,9 @@ const Login = () => {
                             </div>
                         </div>
                         <p className='text-center mt-5'>You have no account ! <Link className='text-blue-500 font-bold' to={'/signUp'}>Create a account</Link></p>
-                    </div>
-                </form>
+                    </from>
+                    <div className='text-center my-5 mx-5'> <SocialLogin></SocialLogin></div>
+                </div>
             </div>
         </div>
     );

@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.drawer-side a.active {
+    color: white;
+  }
+.drawer-side a {
+    background-color: transparent;
+  }
+.drawer-side a:hover {
+    background-color: rgba(128, 128, 128, 0.339);
+  }
+  .menu a.active {
+    color: yellow;
+  }
+  .menu a{
+    background-color: transparent;
+  }

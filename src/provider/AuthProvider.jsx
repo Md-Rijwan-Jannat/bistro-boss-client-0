@@ -4,42 +4,42 @@ import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStat
 
 export const AuthContext = createContext(null);
 
-const Auth = getAuth(app);
+const auth = getAuth(app);
 const goggleProvider = new GoogleAuthProvider();
 
-const AuthProvider = ({children}) => {
+const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
     const loginUser = (email, password) => {
         setLoading(true);
-        return signInWithEmailAndPassword(Auth, email, password);
+        return signInWithEmailAndPassword(auth, email, password);
     }
 
     const signUp = (email, password) => {
         setLoading(true);
-        return createUserWithEmailAndPassword(Auth, email, password);
+        return createUserWithEmailAndPassword(auth, email, password);
     }
 
-    const goggle = () => {
-        setLoading(true)
-        return signInWithPopup(Auth, goggleProvider);
+    const google = () => {
+        setLoading(true);
+        return signInWithPopup(auth, goggleProvider);
     }
 
     const logOut = () => {
         setLoading(true);
-        return signOut(Auth);
+        return signOut(auth);
     }
 
-    const userProfile =(name, photo)=>{
-        setLoading(true)
-        return updateProfile(Auth.currentUser, {
+    const userProfile = (name, photo) => {
+        setLoading(true);
+        return updateProfile(auth.currentUser, {
             displayName: name, photoURL: photo
-          })
+        })
     }
 
     useEffect(() => {
-        const unSubscribe = onAuthStateChanged(Auth, currentUser => {
+        const unSubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
             setLoading(false);
         })
@@ -54,7 +54,7 @@ const AuthProvider = ({children}) => {
         loading,
         loginUser,
         signUp,
-        goggle,
+        google,
         logOut,
         userProfile
     }
