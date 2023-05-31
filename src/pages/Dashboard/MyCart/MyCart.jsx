@@ -1,11 +1,11 @@
 import { Helmet } from "react-helmet";
-import useCart from "../../components/hooks/useCart";
+import useCart from "../../../components/hooks/useCart";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 
 
 const MyCart = () => {
-    const [cart, refetch] = useCart();
+    const [cart, refetch, isLoading] = useCart();
     const total = cart.reduce((sum , item) => item.price + sum , 0)
     const deleteHandler = (_id) => {
         console.log(_id)
@@ -27,6 +27,7 @@ const MyCart = () => {
                         console.log(data)
                         if (data.deletedCount > 0) {
                             refetch();
+                            isLoading();
                             Swal.fire(
                                 'Deleted!',
                                 'Your file has been deleted.',

@@ -19,7 +19,7 @@ const Navbar = () => {
         <li><NavLink className="hover:text-yellow-500" to={'/'}>Home</NavLink></li>
         <li><NavLink className="hover:text-yellow-500" to={'/menu'}>Our Menu</NavLink></li>
         <li><NavLink className="hover:text-yellow-500" to={'/order/salad'}>Order</NavLink></li>
-        <li><NavLink className="hover:text-yellow-500" to={'/'}>DASHBOARD</NavLink></li>
+        <li><NavLink className="hover:text-yellow-500" to={'/dashboard'}>DASHBOARD</NavLink></li>
         <li><NavLink className="hover:text-yellow-500" to={'/contact'}>CONTACT us</NavLink></li>
         <NavLink to={'/dashboard/myCart'} tabIndex={0} className="btn btn-ghost btn-circle">
             <div className="indicator">

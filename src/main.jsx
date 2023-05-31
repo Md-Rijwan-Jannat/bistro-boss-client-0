@@ -6,7 +6,11 @@ import router from './routes/Router'
 import { HelmetProvider } from 'react-helmet-async'
 import AuthProvider from './provider/AuthProvider'
 import { Toaster } from 'react-hot-toast'
-import {
+import  {
+    QueryClient,
+    QueryClientProvider
+} from 'react-query'
+export  {
     QueryClient,
     QueryClientProvider
 } from 'react-query'

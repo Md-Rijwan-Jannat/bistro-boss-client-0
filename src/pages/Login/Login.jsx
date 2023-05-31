@@ -1,15 +1,15 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import loginImg from '../../assets/others/authentication1.png'
 import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from 'react-simple-captcha';
-import { AuthContext } from '../../provider/AuthProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import { Helmet } from 'react-helmet';
 import SocialLogin from '../../components/SocialLogin/SocialLogin';
+import useAuth from '../../components/hooks/useAuth';
 
 
 const Login = () => {
-    const { loginUser } = useContext(AuthContext);
+    const { loginUser } = useAuth();
     const [disabled, setDisabled] = useState(true);
     const location = useLocation()
     const navigate = useNavigate();
@@ -36,7 +36,7 @@ const Login = () => {
                     })
             })
             .catch(error => {
-                console.log(error);
+                console.log(error.message);
                 toast.error(error.message)
             })
     }
@@ -59,7 +59,7 @@ const Login = () => {
                     <img className='md:w-[650px]' src={loginImg} alt="" />
                 </div>
                 <div className="w-1/2 shadow-2xl bg-base-100">
-                    <from onSubmit={loginHandle} className="card-body ">
+                    <form onSubmit={loginHandle} className="card-body ">
                         <h2 className='text-3xl text-center mt-10 mb-5'>Login</h2>
                         <div className="form-control">
                             <label className="label">
@@ -83,7 +83,7 @@ const Login = () => {
                             </div>
                         </div>
                         <p className='text-center mt-5'>You have no account ! <Link className='text-blue-500 font-bold' to={'/signUp'}>Create a account</Link></p>
-                    </from>
+                    </form>
                     <div className='text-center my-5 mx-5'> <SocialLogin></SocialLogin></div>
                 </div>
             </div>

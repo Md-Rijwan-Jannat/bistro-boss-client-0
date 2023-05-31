@@ -23,7 +23,7 @@ const PopularMenu = () => {
                     ></MenuItem>)
                 }
             </div>
-            <Link to={`/order`} className="btn btn-outline border-0 border-b-4">Order Now</Link>
+            <Link to={`/order/salad`} className="btn btn-outline border-0 border-b-4">Order Now</Link>
         </section>
     );
 };
