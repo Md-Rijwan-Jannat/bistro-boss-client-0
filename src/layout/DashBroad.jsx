@@ -15,14 +15,14 @@ const DashBroad = () => {
     // const isAdmin = true;
     const [isAdmin] = useAdmin();
     return (
-        <>
+        <div className=" bg-slate-300">
             <Helmet><title>Bistro boss | Dashboard</title></Helmet>
             <div className="drawer drawer-mobile">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-                <div className="drawer-content flex flex-col items-center justify-center">
+                <div className="drawer-content text-center mt-5">
                     {/* <!-- Page content here --> */}
+                    <label htmlFor="my-drawer-2" className="btn btn-outline drawer-button lg:hidden">Open drawer</label>
                     <Outlet></Outlet>
-                    <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
 
                 </div>
                 <div className="drawer-side">
@@ -33,7 +33,7 @@ const DashBroad = () => {
                             isAdmin ? <>
                                 <li><NavLink to={'/dashboard/adminHome'}><FaHome size={20}></FaHome> Admin Home</NavLink></li>
                                 <li><NavLink to={'/dashboard/addItems'}><ImSpoonKnife size={20}></ImSpoonKnife> add items</NavLink></li>
-                                <li><NavLink to={'/dashboard/manage'}><TfiMenuAlt size={20}></TfiMenuAlt> manage items</NavLink></li>
+                                <li><NavLink to={'/dashboard/manageItems'}><TfiMenuAlt size={20}></TfiMenuAlt> manage items</NavLink></li>
                                 <li>
                                     <NavLink className={'flex items-center size={20} gap-2'} to={'/dashboard/manageBooking'}><ImAddressBook></ImAddressBook> manage booking</NavLink>
                                 </li>
@@ -61,7 +61,7 @@ const DashBroad = () => {
 
                 </div>
             </div>
-        </>
+        </div>
     );
 };
 

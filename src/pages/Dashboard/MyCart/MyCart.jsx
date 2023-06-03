@@ -2,11 +2,12 @@ import { Helmet } from "react-helmet";
 import useCart from "../../../components/hooks/useCart";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 
 const MyCart = () => {
     const [cart, refetch, isLoading] = useCart();
-    const total = cart.reduce((sum , item) => item.price + sum , 0)
+    const total = cart.reduce((sum, item) => item.price + sum, 0)
     const deleteHandler = (_id) => {
         console.log(_id)
         Swal.fire({
@@ -27,7 +28,11 @@ const MyCart = () => {
                         console.log(data)
                         if (data.deletedCount > 0) {
                             refetch();
-                            isLoading();
+                            if (isLoading) {
+                                return <div className="h-[600px] flex items-center justify-center">
+                                    <span className="loading loading-dots loading-md"></span>
+                                </div>
+                            }
                             Swal.fire(
                                 'Deleted!',
                                 'Your file has been deleted.',
@@ -40,14 +45,14 @@ const MyCart = () => {
 
     }
     return (
-        <div className="w-full ml-10 h-screen">
+        <div className="w-full h-screen">
             <Helmet>
                 <title>Bistro Boss | My Cart</title>
             </Helmet>
             <div className="uppercase flex h-[100px] justify-evenly items-center" >
                 <h2 className="text-2xl font-semibold">Total items: {cart.length}</h2>
-                <h2 className="text-2xl font-semibold">Total Price: {"$"+total}</h2>
-                <button className="btn bg-[#D1A054] border-0 hover:bg-yellow-600" >Pay</button>
+                <h2 className="text-2xl font-semibold">Total Price: {"$" + total}</h2>
+                <Link to={'/dashboard/payment'} className="btn bg-[#D1A054] border-0 hover:bg-yellow-600" >Pay</Link>
             </div>
             <div>
                 <div className="overflow-x-hidden w-full">

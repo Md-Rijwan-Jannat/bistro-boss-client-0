@@ -9,8 +9,8 @@ const PrivateRouter = ({ children }) => {
     const location = useLocation();
 
     if (loading) {
-        return <div className="h-[500px] flex items-center justify-center">
-            <p>Loading..</p>
+        return <div className="h-[600px] flex items-center justify-center">
+            <span className="loading loading-dots loading-md"></span>
         </div>
     }
     if (user) {

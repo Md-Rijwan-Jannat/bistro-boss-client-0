@@ -1,13 +1,12 @@
-import {  NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { FaUser } from "react-icons/fa";
-import { useContext } from "react";
-import { AuthContext } from "../../../provider/AuthProvider";
 import { toast } from "react-hot-toast";
 import useCart from "../../../components/hooks/useCart";
+import useAuth from "../../../components/hooks/useAuth";
 
 const Navbar = () => {
     const [cart] = useCart();
-    const { user, logOut } = useContext(AuthContext);
+    const { user, logOut } = useAuth();
     const handleLogOut = () => {
         logOut()
             .then(() => { toast.success("LogOut successfully") })
@@ -19,18 +18,22 @@ const Navbar = () => {
         <li><NavLink className="hover:text-yellow-500" to={'/'}>Home</NavLink></li>
         <li><NavLink className="hover:text-yellow-500" to={'/menu'}>Our Menu</NavLink></li>
         <li><NavLink className="hover:text-yellow-500" to={'/order/salad'}>Order</NavLink></li>
-        <li><NavLink className="hover:text-yellow-500" to={'/dashboard'}>DASHBOARD</NavLink></li>
+        {
+            user && <>
+                <li><NavLink className="hover:text-yellow-500" to={'/dashboard'}>DASHBOARD</NavLink></li>
+                <NavLink to={'/dashboard/myCart'} tabIndex={0} className="btn btn-ghost btn-circle">
+                    <div className="indicator">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                        <span className="badge badge-sm indicator-item">+{cart?.length || 0}</span>
+                    </div>
+                </NavLink>
+            </>
+        }
         <li><NavLink className="hover:text-yellow-500" to={'/contact'}>CONTACT us</NavLink></li>
-        <NavLink to={'/dashboard/myCart'} tabIndex={0} className="btn btn-ghost btn-circle">
-            <div className="indicator">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
-                <span className="badge badge-sm indicator-item">+{cart?.length || 0}</span>
-            </div>
-        </NavLink>
         {
             user ?
                 <>
-                    <button onClick={handleLogOut} className="btn btn-ghost">LogOut</button>
+                    <li onClick={handleLogOut} className="btn btn-ghost">LogOut </li>
                     <img className="w-10 h-10 rounded-full" src={user.photoURL} alt="" />
                 </>
                 :

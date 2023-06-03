@@ -6,9 +6,11 @@ import { toast } from 'react-hot-toast';
 import { Helmet } from 'react-helmet';
 import SocialLogin from '../../components/SocialLogin/SocialLogin';
 import useAuth from '../../components/hooks/useAuth';
-
+import { MoonLoader } from "react-spinners";
 
 const Login = () => {
+    const {loading} = useAuth()
+    // const [loading, setLoading] = useState(false)
     const { loginUser } = useAuth();
     const [disabled, setDisabled] = useState(true);
     const location = useLocation()
@@ -30,10 +32,7 @@ const Login = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
                 navigate(from, { replace: true })
-                    .catch(error => {
-                        console.log(error)
-                        toast.error(error.message)
-                    })
+                toast.success("Successfully login!")
             })
             .catch(error => {
                 console.log(error.message);
@@ -79,7 +78,7 @@ const Login = () => {
                                 <input type="captcha" onBlur={HandleValidateCaptcha} required placeholder="type here" className="input input-bordered w-full" />
                             </div>
                             <div className="form-control mt-6">
-                                <button disabled={disabled} className="btn border-0 rounded-none bg-[#D1A054] hover:bg-orange-400 btn-block">Login</button>
+                                <button disabled={disabled} className="btn border-0 rounded-none bg-[#D1A054] hover:bg-orange-400 btn-block">{loading? 'Login':  <MoonLoader size={20} color="red" />}</button>
                             </div>
                         </div>
                         <p className='text-center mt-5'>You have no account ! <Link className='text-blue-500 font-bold' to={'/signUp'}>Create a account</Link></p>

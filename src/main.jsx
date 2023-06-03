@@ -14,6 +14,8 @@ export  {
     QueryClient,
     QueryClientProvider
 } from 'react-query'
+import 'react-date-range/dist/styles.css'; // main css file
+import 'react-date-range/dist/theme/default.css'; // theme css file
 
 const queryClient = new QueryClient()
 

@@ -12,6 +12,11 @@ import Contact from "../pages/Contact/Contact";
 import DashBroad from "../layout/DashBroad";
 import AllUsers from "../pages/Dashboard/AllUsers/AllUsers";
 import MyCart from "../pages/Dashboard/MyCart/MyCart";
+import AddItems from "../pages/Dashboard/AddItems/AddItems";
+import PrivateRouter from "../provider/PrivateRouter";
+import AdminRoute from "../provider/AdminRoute";
+import ManageItems from "../pages/Dashboard/ManageItems/ManageItems";
+import Payment from "../pages/Dashboard/Payment/Payment";
 
 const router = createBrowserRouter([
   {
@@ -31,7 +36,7 @@ const router = createBrowserRouter([
         element: <Order></Order>
       },
       {
-        path:'/contact',
+        path: '/contact',
         element: <Contact></Contact>
       }
     ],
@@ -51,17 +56,30 @@ const router = createBrowserRouter([
     ]
   },
   {
-    path:'/dashboard',
-    element:<DashBroad></DashBroad>,
-    children:[
+    path: 'dashboard',
+    element: <PrivateRouter><DashBroad></DashBroad></PrivateRouter>,
+    children: [
       {
-        path:'myCart',
-        element: <MyCart></MyCart>
+        path: 'myCart',
+        element:<MyCart></MyCart>
       },
       {
-        path:'allUsers',
-        element: <AllUsers></AllUsers>
-      }
+        path: 'payment',
+        element:<Payment></Payment>
+      },
+      {
+        path: 'allUsers',
+        element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
+      },
+      {
+        path: 'addItems',
+        element: <AdminRoute><AddItems></AddItems></AdminRoute>
+      },
+    
+      {
+        path: 'manageItems',
+        element: <AdminRoute><ManageItems></ManageItems></AdminRoute>
+      },
     ]
   }
 ]);

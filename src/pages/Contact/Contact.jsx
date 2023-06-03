@@ -3,6 +3,7 @@ import Cover from "../shared/Cover/Cover";
 import ContactImg from '../../assets/contact/banner.jpg'
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
 import { FaPhoneAlt } from "react-icons/fa";
+import DateRange from "../../components/Dates/DateRange";
 
 
 const Contact = () => {
@@ -45,6 +46,8 @@ const Contact = () => {
                     </div>
                 </section>
             </div>
+            {/* date range */}
+            <DateRange></DateRange>
         </div>
     );
 };

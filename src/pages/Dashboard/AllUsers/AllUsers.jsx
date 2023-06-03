@@ -41,8 +41,13 @@ const AllUsers = () => {
                     .then(data => {
                         console.log(data)
                         if (data.deletedCount > 0) {
-                            isLoading();
+                            
                             refetch();
+                            if (isLoading) {
+                               return <div className="h-[600px] flex items-center justify-center">
+                                    <span className="loading loading-dots loading-md"></span>
+                                </div>
+                            }
                             Swal.fire(
                                 'Deleted!',
                                 'Your file has been deleted.',
