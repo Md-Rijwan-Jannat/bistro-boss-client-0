@@ -39,7 +39,7 @@ const DashBroad = () => {
                                 </li>
                                 <li><NavLink to={'/dashboard/allUsers'}><FaUsers size={20}></FaUsers> all user</NavLink></li>
                             </> : <>
-                                <li><NavLink to={'/userHome'}><FaHome size={20}></FaHome> User Home</NavLink></li>
+                                <li><NavLink to={'/dashboard/userHome'}><FaHome size={20}></FaHome> User Home</NavLink></li>
                                 <li><NavLink to={'/reservation'}><FaCalendarAlt size={20}></FaCalendarAlt> Reservation</NavLink></li>
                                 <li><NavLink to={'/payment'}><FaWallet size={20}></FaWallet> payment history</NavLink></li>
                                 <li>

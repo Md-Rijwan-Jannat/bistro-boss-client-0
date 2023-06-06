@@ -3,17 +3,37 @@
 @tailwind utilities;
 
 .drawer-side a.active {
-    color: white;
-  }
+  color: white;
+}
+
 .drawer-side a {
-    background-color: transparent;
-  }
+  background-color: transparent;
+}
+
 .drawer-side a:hover {
-    background-color: rgba(128, 128, 128, 0.339);
-  }
-  .menu a.active {
-    color: yellow;
-  }
-  .menu a{
-    background-color: transparent;
-  }
+  background-color: rgba(128, 128, 128, 0.339);
+}
+
+.menu a.active {
+  color: yellow;
+}
+
+.menu a {
+  background-color: transparent;
+}
+
+.backGround1 {
+  background: linear-gradient(90deg, #BB34F5 0%, #FCDBFF 100%);
+}
+
+.backGround2 {
+  background: linear-gradient(90deg, #D3A256 0%, #FDE8C0 100%);
+}
+
+.backGround3 {
+  background: linear-gradient(90deg, #FE4880 0%, #FECDE9 100%);
+}
+
+.backGround4 {
+  background: linear-gradient(90deg, #6AAEFF 0%, #B6F7FF 100%);
+}
