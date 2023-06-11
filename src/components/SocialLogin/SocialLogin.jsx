@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../../provider/AuthProvider";
 import { useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
 
 
 const SocialLogin = () => {
@@ -16,7 +17,7 @@ const SocialLogin = () => {
                 const loggedUser = result.user;
                 console.log(loggedUser)
                 const saveUser = { name: loggedUser.displayName, email: loggedUser.email };
-                fetch(`http://localhost:5000/users`, {
+                fetch(`https://bistro-boss-server-rose.vercel.app/users`, {
                     method: "POST",
                     headers: {
                         "content-type": "application/json"
@@ -24,9 +25,9 @@ const SocialLogin = () => {
                     body: JSON.stringify(saveUser)
                 })
                     .then(res => res.json())
-                    .then(data => {
-                        console.log(data);
-                            navigate(from, { replace: true });
+                    .then(() => {
+                        navigate(from, { replace: true });
+                        toast.success('login Successfully!')
                     })
             })
             .catch(error => console.log(error))

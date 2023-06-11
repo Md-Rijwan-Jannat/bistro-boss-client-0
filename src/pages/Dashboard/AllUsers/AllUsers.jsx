@@ -9,15 +9,12 @@ const AllUsers = () => {
     const [users, refetch, isLoading] = useUsers();
     // console.log(users)
     const makeAdminHandler = (_id) => {
-        fetch(`http://localhost:5000/users/admin/${_id}`, {
+        fetch(`https://bistro-boss-server-rose.vercel.app/users/admin/${_id}`, {
             method: 'PATCH',
-            // headers: {"content-type" : "application/json"},
-            // body: JSON.stringify()
         })
             .then(res => res.json())
             .then(data => {
                 if (data) {
-                    isLoading();
                     refetch();
                     toast.success(`${users.name} are new admin!`)
                 }
@@ -34,14 +31,13 @@ const AllUsers = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/users/${_id}`, {
+                fetch(`https://bistro-boss-server-rose.vercel.app/users/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
                     .then(data => {
                         console.log(data)
                         if (data.deletedCount > 0) {
-                            
                             refetch();
                             if (isLoading) {
                                return <div className="h-[600px] flex items-center justify-center">

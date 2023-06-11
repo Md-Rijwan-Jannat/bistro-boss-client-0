@@ -11,7 +11,7 @@ import '@smastrom/react-rating/style.css'
 const Testimonials = () => {
     const [reviews, setReviews] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/reviews')
+        fetch('https://bistro-boss-server-rose.vercel.app/reviews')
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [])
@@ -39,7 +39,7 @@ const Testimonials = () => {
                                     maxWidth: 150,
                                     marginBottom: "48px"
                                 }} value={review.rating} />
-                                <img className="w-24 h-24 mb-5" src="https://e7.pngegg.com/pngimages/11/904/png-clipart-quotation-mark-symbol-computer-icons-quotation-text-silhouette-thumbnail.png" alt="" />
+                            <img className="w-24 h-24 mb-5" src="https://e7.pngegg.com/pngimages/11/904/png-clipart-quotation-mark-symbol-computer-icons-quotation-text-silhouette-thumbnail.png" alt="" />
                             <p>{review.details}</p>
                             <h2 className="text-2xl font-bold text-yellow-500">{review.name}</h2>
                         </div>

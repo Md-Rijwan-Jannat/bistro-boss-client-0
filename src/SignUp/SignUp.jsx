@@ -23,7 +23,7 @@ const SignUp = () => {
                 userProfile(data.name, data.photo)
                     .then(result => {
                         const saveUser = { name: data.name, email: data.email };
-                        fetch(`http://localhost:5000/users`, {
+                        fetch(`https://bistro-boss-server-rose.vercel.app/users`, {
                             method: "POST",
                             headers: {
                                 "content-type": "application/json"
@@ -31,7 +31,7 @@ const SignUp = () => {
                             body: JSON.stringify(saveUser)
                         })
                             .then(res => res.json())
-                            .then(data => {
+                        .then(data => {
                                 console.log(data);
                                 if (data.insertedId) {
                                     Swal.fire({
